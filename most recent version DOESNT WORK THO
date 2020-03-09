@@ -1,0 +1,80 @@
+public class DrawBall                           //write a new class containing a main method
+{
+    public static void main(String[] args) 
+    {
+        GameArena arena = new GameArena(500,500);   //inside main method, create instance of GameArena class
+        Ball b = new Ball(250,250,50, "GREY");   //create instance of Ball class- change colour + make ball appear somewhere in middle
+        double x = 0;
+        double y = 0;
+        boolean edgeFlag = false;               //set a flag to check if ball has reached edge
+        
+        arena.addBall(b);                           //adds ball to arena
+           
+        //HORIZONTALLY
+
+        x = b.getXPosition();                   //get x position of ball, set as x
+        //b.setXPosition(25);                   //set position to start of screen
+
+        while (true)                            //create a while loop that runs forever 
+        {
+            x = x + 5;                          //have the ball move in increments of 5 
+            b.setXPosition(x);                  //then update position
+            arena.pause();                      //pause so we can observe movement
+            System.out.println(x);            //print new position of ball in terminal- ONLY USE WHILE TESTING
+
+            if (x > 500 || x<0)
+            {
+                //x = -x;
+                b.setXPosition(-x);
+            }                       //if ball has reached edge, bounce back
+        /*    {
+                while(true)
+                {
+                    x= x-5;                     //set position to reverse?
+                    b.setXPosition(x);
+                    arena.pause();
+                }
+            } */
+
+            if (x <= 25)
+            {
+                while(true)
+                {
+                    x = x+5;
+                    b.setXPosition(x);
+                    arena.pause();
+                }
+            }
+                /*System.out.println("edge reached");
+                edgeFlag = true;
+                b.setXPosition(25);
+                break; */
+            
+        }    
+        
+    
+    /*    //VERTICALLY
+
+        y = b.getYPosition();                   //get Y position of ball, set as y
+        b.setYPosition(20);                     //set position to bottom of screen (cant u just set y =20)
+
+        while (true)                            //create a while loop that runs forever 
+        {
+            y = y + 5;                          //have the ball move in increments of 5 
+            b.setYPosition(y);                  //then update position
+            arena.pause();                          //pause so we can see movement
+            //System.out.println(y);            //print new position of ball in terminal- only use when testing
+
+            if ( y >= 475 || y <= 25)           //if ball has reached edge, return to center n exit loop
+            {
+                System.out.println("edge reached");
+                b.setYPosition(25);
+                edgeFlag = true;
+                break;
+            }
+            
+        }  */
+         
+
+    }
+}
