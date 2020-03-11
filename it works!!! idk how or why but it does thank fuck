@@ -1,0 +1,46 @@
+//write a new class containing a main method
+public class DrawBallDiv
+{
+    public static void main(String[] args) 
+    {
+        GameArena a = new GameArena(500,500); //inside main method, create instance of GameArena class
+        Ball[] balls = new Ball[5]; //create instance of Ball class- change colour + make ball appear somewhere in middle
+        double[] xSpeeds = new double[5];
+        double[] ySpeeds = new double[5];
+
+        for (int i = 0; i<balls.length; i++)
+        {
+            balls[i] = new Ball(Math.random()*500, Math.random()*500, 10, "green");
+            xSpeeds[i] = Math.random() * 10;
+            ySpeeds[i] = Math.random() * 10;
+            a.addBall(balls[i]);
+        }
+
+
+        while (true) //create a while loop that runs forever 
+        {
+            for (int i = 0; i < balls.length; i++)
+            {
+                double x = balls[i].getXPosition();
+                double y = balls[i].getYPosition();
+            
+
+                if ( x > 500 || x < 0) //if ball has reached edge, reverse  
+                {
+                    xSpeeds[i] = - xSpeeds[i];
+                }
+
+                if ( y > 500 || y < 0) //if ball has reached edge, reverse  
+                {
+                    ySpeeds[i] = - ySpeeds[i];
+                }
+
+                balls[i].setXPosition (x + xSpeeds[i]);
+                balls[i].setYPosition (y + ySpeeds[i]);
+            }
+         
+        }  
+               
+
+    }
+}
