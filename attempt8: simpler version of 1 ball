@@ -1,0 +1,38 @@
+//write a new class containing a main method
+public class DrawOneBall
+{
+    public static void main(String[] args) 
+    {
+        GameArena a = new GameArena(500,500); //inside main method, create instance of GameArena class
+        Ball balls = new Ball(25, 250, 20, "green");; //creates an array of 5 objects of the class ball and puts in an array called balls
+        double xReverse = 0; //creates double called xReverse
+        double yReverse = 0;//creates double called yReverse
+        a.addBall(balls);
+        xReverse = 30;
+        yReverse= 30;
+
+
+        while (true) //create a while loop that runs forever 
+        {
+
+            double x = balls.getXPosition(); //gets X coord of ball
+            double y = balls.getYPosition(); //gets Y coord of ball
+            
+
+            if ( x > 500 || x < 0) //if ball has reached edge, reverse  
+            {
+                xReverse = - xReverse; //reverse
+            }
+
+            if ( y > 500 || y < 0) //if ball has reached height of arena, reverse  
+            {
+                yReverse = - yReverse; //reverse
+            }
+
+            balls.setXPosition (x + xReverse); //set new XCoord of ball as getPosition plus(-30)
+            balls.setYPosition (y + yReverse); //new Ycoord of ball
+         
+        }            
+
+    }
+}
