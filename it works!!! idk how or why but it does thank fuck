@@ -4,39 +4,39 @@ public class DrawBallDiv
     public static void main(String[] args) 
     {
         GameArena a = new GameArena(500,500); //inside main method, create instance of GameArena class
-        Ball[] balls = new Ball[5]; //create instance of Ball class- change colour + make ball appear somewhere in middle
-        double[] xSpeeds = new double[5];
-        double[] ySpeeds = new double[5];
+        Ball[] balls = new Ball[5]; //creates an array of 5 objects of the class ball and puts in an array called balls
+        double[] xSpeeds = new double[5];//creates an aray of 5 elements data type doubles called xSpeeds
+        double[] ySpeeds = new double[5];//creates an aray of 5 elements data type doubles called ySpeeds
 
-        for (int i = 0; i<balls.length; i++)
+        for (int i = 0; i<balls.length; i++) //keeps iterating through this loop for the length of the balls array
         {
-            balls[i] = new Ball(Math.random()*500, Math.random()*500, 10, "green");
-            xSpeeds[i] = Math.random() * 10;
-            ySpeeds[i] = Math.random() * 10;
-            a.addBall(balls[i]);
+            balls[i] = new Ball(Math.random()*500, Math.random()*500, 10, "green"); //this iterates through the array balls and uses the math function to place them at a random point in the screen, size 10 and colour green
+            xSpeeds[i] = Math.random() * 10; //for the i element in the xSpeeds generates a random number
+            ySpeeds[i] = Math.random() * 10; //the speed of the balls Y coord
+            a.addBall(balls[i]); //update and add balls to the screen
         }
 
 
         while (true) //create a while loop that runs forever 
         {
-            for (int i = 0; i < balls.length; i++)
+            for (int i = 0; i < balls.length; i++) //will run for the length of the array
             {
-                double x = balls[i].getXPosition();
-                double y = balls[i].getYPosition();
+                double x = balls[i].getXPosition(); //gets X coord of ball
+                double y = balls[i].getYPosition(); //gets Y coord of ball
             
 
                 if ( x > 500 || x < 0) //if ball has reached edge, reverse  
                 {
-                    xSpeeds[i] = - xSpeeds[i];
+                    xSpeeds[i] = - xSpeeds[i]; //reverse
                 }
 
-                if ( y > 500 || y < 0) //if ball has reached edge, reverse  
+                if ( y > 500 || y < 0) //if ball has reached height of arena, reverse  
                 {
-                    ySpeeds[i] = - ySpeeds[i];
+                    ySpeeds[i] = - ySpeeds[i]; //reverse
                 }
 
-                balls[i].setXPosition (x + xSpeeds[i]);
-                balls[i].setYPosition (y + ySpeeds[i]);
+                balls[i].setXPosition (x + xSpeeds[i]); //new xcoord of ball
+                balls[i].setYPosition (y + ySpeeds[i]); //new ycoord of ball
             }
          
         }  
