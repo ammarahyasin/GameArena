@@ -1,0 +1,40 @@
+// Write a new class containing a main method
+public class correct
+{
+    public static void main(String[] args)
+    {
+        GameArena a = new GameArena(500,500);// Creates a game arena object
+        Ball[] balls = new Ball[5];// Creates an array of 5 objects of the class ball and puts it in an array called balls 
+        double[] xSpeeds = new double[5];// Creates an array of 5 elements data type doubles called xSpeeds
+        double[] ySpeeds = new double[5];// Creates an array of 5 elements data type doubles called ySpeeds
+        
+        for (int i = 0 ; i < balls.length; i++)// Keeps iterating through this loop for the length of the balls array 
+        {
+            balls[i] = new Ball(Math.random()*500, Math.random()*500, 10, "green" ); // This iterates through the array balls, and uses the math function to place them in a random places in the screen, size 10, green 
+            xSpeeds[i] = Math.random() * 10;// For the i element in the xSpeeds array generates a random number
+            ySpeeds[i] = Math.random() * 10;// The speed of the balls Y coord 
+            a.addBall(balls[i]);// Update and add the balls to the screen 
+        }
+
+        while (true) // Constant while loop
+        {
+            for (int i = 0; i < balls.length; i++) // will run for the length of the balls array 
+            {
+                double x = balls[i].getXPosition (); //gets X coord of ball
+                double y = balls[i].getYPosition ();  //gets Y coord of ball
+            }
+            if (x > 500 || x < 0) // if the ball hits the edge of the arena 
+            {
+                xSpeeds[i] = - xSpeeds[i]; // This makes the ball move away from the edge
+            }
+            if (y > 500 || y < 0) // If the ball hits the hieght of the arena
+            {
+                ySpeeds[i] = - ySpeeds[i]; // This makes the ball move away from the edge 
+            }   
+                balls[i].setXPosition (x + xSpeeds[i]); // New x coord of the ball causing it to bounce
+                balls[i].setYPosition (y + ySpeeds[i]); // New y Coord of the ball causing it to bounce 
+        
+        }
+    }
+}
+
