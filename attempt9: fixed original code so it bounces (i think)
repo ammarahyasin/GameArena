@@ -1,0 +1,37 @@
+//write a new class containing a main method
+public class DrawBall
+{
+    public static void main(String[] args) 
+    {
+        GameArena a = new GameArena(500,500); //inside main method, create instance of GameArena class
+        Ball b = new Ball(25,250,50, "GREY"); //create instance of Ball class- change colour + make ball appear somewhere in middle
+        
+        double reversePosition = 30;    
+        a.addBall(b);  //adding ball to arena
+           
+        //initialPosition = b.getXPosition(); //get x position of ball, set as x
+        //b.setXPosition(20); //set position to start of screen (cant u just set i =20)
+
+        while (true) //create a while loop that runs forever 
+        {
+
+            double initialPosition = b.getXPosition();
+            //initialPosition = initialPosition + 20; //have the ball move in increments of 20 
+            //b.setXPosition(initialPosition); //then update position
+            //a.pause(); //pause so we can see movement
+            //System.out.println(initialPosition); //print new position of ball in terminal
+
+            if ( initialPosition > 500 || initialPosition <0) //if ball has reached edge, return to center n exit loop
+            {
+                //System.out.println("edge reached");
+                reversePosition = - reversePosition;
+                //break;
+            }
+
+            b.setXPosition(initialPosition + reversePosition);
+            
+        }  
+               
+
+    }
+}
